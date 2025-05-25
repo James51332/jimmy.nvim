@@ -13,5 +13,9 @@ opt.shiftwidth=2
 opt.formatoptions = opt.formatoptions - "o"
 opt.signcolumn = "yes:2"
 
--- Settings for NetRW
-vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
+-- Setup oil.nim
+require("oil").setup({
+  delete_to_trash = true,
+  skip_confirm_for_simple_edits = true,
+})
+

@@ -1,7 +1,7 @@
 -- Include our other settings
 require("config.lazy")
 require("config.remaps")
-require("config.config")
+require("config.settings")
 require("config.hardmode")
 
 -- Setup LSP

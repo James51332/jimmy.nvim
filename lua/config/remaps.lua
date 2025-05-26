@@ -39,8 +39,9 @@ local generate_finder = function()
   })
 end
 
-vim.keymap.set('n', '<leader>fb', require('telescope').builtin.buffers)
-vim.keymap.set('n', '<leader>fg', require('telescope').builtin.live_grep)
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fb', builtin.buffers)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep)
 vim.keymap.set("n", "<leader>ff", function()
   local conf = require("telescope.config").values
   local action_state = require("telescope.actions.state")
@@ -58,6 +59,7 @@ vim.keymap.set("n", "<leader>ff", function()
             require("marlin").remove(selection.filename)
           end)
         end)
+
         map("i", "+", function(bufnr)
           local current_picker = action_state.get_current_picker(bufnr)
           local selection = current_picker:get_selection()

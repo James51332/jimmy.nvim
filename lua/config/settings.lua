@@ -17,7 +17,7 @@ vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = 'yes:2'
 
--- Setup oil.nim
+-- Setup oil.nvim
 require('oil').setup({
   delete_to_trash = true,
   skip_confirm_for_simple_edits = true,

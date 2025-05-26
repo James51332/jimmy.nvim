@@ -1,8 +1,9 @@
 {
-  "catppuccin": { "branch": "main", "commit": "be1e5e6308bb9d016bf5c1565e0f1d5e46400d7a" },
+  "catppuccin": { "branch": "main", "commit": "56a9dfd1e05868cf3189369aad87242941396563" },
   "cmake-tools.nvim": { "branch": "master", "commit": "591ae37fc5494677e929118f0a182d2b61fe1af1" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
-  "mini.nvim": { "branch": "main", "commit": "9688298860d8ac7d334139c5fd599edbedeff3c0" },
+  "marlin.nvim": { "branch": "main", "commit": "eeb9c413953c94c0ba9a75047ceb9a9cd5db61e0" },
+  "mini.nvim": { "branch": "main", "commit": "d90adc96b68b310cf17d8ebcc8e2e4626c6bb8cc" },
   "neoscroll.nvim": { "branch": "master", "commit": "f957373912e88579e26fdaea4735450ff2ef5c9c" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-web-devicons": { "branch": "master", "commit": "1fb58cca9aebbc4fd32b086cb413548ce132c127" },

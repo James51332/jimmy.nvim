@@ -11,7 +11,13 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>ls', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
 vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
-vim.keymap.set('i', '<C-space>', vim.lsp.omnifunc)
+vim.keymap.set('i', '<C-space>', '<C-x><C-o>')
+
+-- CMake Settings
+vim.keymap.set('n', '<leader>bb', vim.cmd.CMakeBuild)
+vim.keymap.set('n', '<leader>br', vim.cmd.CMakeRun)
+vim.keymap.set('n', '<leader>bd', vim.cmd.CMakeDebug)
+vim.keymap.set('n', '<leader>bg', vim.cmd.CMakeGenerate)
 
 -- Fuzzy Finder
 local builtin = require('telescope.builtin')

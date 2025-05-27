@@ -8,7 +8,7 @@ vim.keymap.set('n', '<leader>e', require'oil'.open)
 -- LSP Settings
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-vim.keymap.set('n', '<leader>ls', vim.lsp.buf.hover)
+vim.keymap.set('n', '<leader>li', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
 vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
 vim.keymap.set('i', '<C-space>', '<C-x><C-o>')
@@ -40,6 +40,7 @@ local generate_finder = function()
 end
 
 local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fa', builtin.find_files)
 vim.keymap.set('n', '<leader>fb', builtin.buffers)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep)
 vim.keymap.set("n", "<leader>ff", function()
@@ -81,7 +82,7 @@ vim.keymap.set("n", "<leader>ff", function()
 local marlin = require('marlin')
 vim.keymap.set('n', '<leader>a', function() marlin.add() end, { desc = 'Marlin add' })
 vim.keymap.set('n', '<leader>fx', function() marlin.remove() end, { desc = 'Marlin remove' })
-vim.keymap.set('n', '<leader>fc', function() marlin.clear() end, { desc = 'Marlin clear' })
+vim.keymap.set('n', '<leader>fc', function() marlin.remove_all() end, { desc = 'Marlin clear' })
 
 for i = 1,9 do
   vim.keymap.set('n', '<leader>' .. i, function() marlin.open(i) end, { desc = 'Marlin open #' .. i })

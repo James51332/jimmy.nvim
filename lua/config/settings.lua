@@ -22,3 +22,8 @@ require('oil').setup({
   delete_to_trash = true,
   skip_confirm_for_simple_edits = true,
 })
+
+-- Setup telescope to ignore vendor stuff
+require('telescope').setup({defaults = {
+  file_ignore_patterns = { '/.git/', '/out/', '/build/', '/thirdparty/', '^.git/', '^out/', '^build/', '^thirdparty/' }
+}})

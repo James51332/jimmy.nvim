@@ -16,6 +16,7 @@ opt.formatoptions = 'tcqn'
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = 'yes:2'
+opt.clipboard = 'unnamedplus'
 
 -- Setup oil.nvim
 require('oil').setup({

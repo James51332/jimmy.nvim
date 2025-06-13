@@ -6,3 +6,4 @@ require("config.hardmode")
 
 -- Setup LSP
 vim.lsp.enable("clangd")
+

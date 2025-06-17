@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>e', require'oil'.open)
 
 -- LSP Settings
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>li', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)

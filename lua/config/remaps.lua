@@ -19,6 +19,19 @@ vim.keymap.set('n', '<leader>bb', vim.cmd.CMakeBuild)
 vim.keymap.set('n', '<leader>br', vim.cmd.CMakeRun)
 vim.keymap.set('n', '<leader>bd', vim.cmd.CMakeDebug)
 vim.keymap.set('n', '<leader>bg', vim.cmd.CMakeGenerate)
+vim.keymap.set('n', '<leader>bt', vim.cmd.CMakeTest)
+vim.keymap.set('n', '<leader>bc', vim.cmd.CMakeClean)
+vim.keymap.set('n', '<leader>bs', vim.cmd.CMakeSelectBuildTarget)
+
+-- Debug Settings (I'm using s because I think I'll delete stuff on accident if I bind to d)
+local dap, dapui = require('dap'), require('dapui')
+vim.keymap.set('n', '<leader>so', dapui.open)
+vim.keymap.set('n', '<leader>sb', dap.toggle_breakpoint)
+vim.keymap.set('n', '<leader>sc', dap.continue)
+vim.keymap.set('n', '<leader>ss', dap.step_over)
+vim.keymap.set('n', '<leader>se', dap.step_out)
+vim.keymap.set('n', '<leader>si', dap.step_into)
+vim.keymap.set('n', '<leader>st', dap.terminate)
 
 -- Setup Marlin as our tool for switching files quickly
 local mindex = 0

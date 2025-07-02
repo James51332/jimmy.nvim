@@ -4,6 +4,7 @@ vim.g.leader = ' '
 -- Setup all of the remaps that I want to use with nvim
 vim.keymap.set('n', '<leader>w', vim.cmd.w)
 vim.keymap.set('n', '<leader>e', require'oil'.open)
+vim.keymap.set('n', '<leader>x', vim.cmd.q)
 
 -- LSP Settings
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
@@ -22,6 +23,10 @@ vim.keymap.set('n', '<leader>bg', vim.cmd.CMakeGenerate)
 vim.keymap.set('n', '<leader>bt', vim.cmd.CMakeTest)
 vim.keymap.set('n', '<leader>bc', vim.cmd.CMakeClean)
 vim.keymap.set('n', '<leader>bs', vim.cmd.CMakeSelectBuildTarget)
+
+-- Package Managers
+vim.keymap.set('n', '<leader>pl', vim.cmd.Lazy)
+vim.keymap.set('n', '<leader>pm', vim.cmd.Mason)
 
 -- Debug Settings (I'm using s because I think I'll delete stuff on accident if I bind to d)
 local dap, dapui = require('dap'), require('dapui')

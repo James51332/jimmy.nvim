@@ -7,4 +7,6 @@ require("config.debug")
 
 -- Setup LSP
 vim.lsp.enable("clangd")
-
+vim.lsp.enable("basedpyright")
+vim.lsp.enable("typescript")
+vim.lsp.enable("rust-analyzer")

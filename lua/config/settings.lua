@@ -18,6 +18,9 @@ vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = 'yes:2'
 opt.clipboard = 'unnamedplus'
 
+vim.keymap.set('v', '<', '< gv')
+vim.keymap.set('v', '>', '> gv')
+
 -- Setup oil.nvim
 require('oil').setup({
   delete_to_trash = true,

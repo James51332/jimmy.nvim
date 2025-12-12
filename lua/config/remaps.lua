@@ -15,14 +15,28 @@ vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
 vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
 vim.keymap.set('i', '<C-space>', '<C-x><C-o>')
 
--- CMake Settings
-vim.keymap.set('n', '<leader>bb', vim.cmd.CMakeBuild)
-vim.keymap.set('n', '<leader>br', vim.cmd.CMakeRun)
-vim.keymap.set('n', '<leader>bd', vim.cmd.CMakeDebug)
-vim.keymap.set('n', '<leader>bg', vim.cmd.CMakeGenerate)
-vim.keymap.set('n', '<leader>bt', vim.cmd.CMakeTest)
-vim.keymap.set('n', '<leader>bc', vim.cmd.CMakeClean)
-vim.keymap.set('n', '<leader>bs', vim.cmd.CMakeSelectBuildTarget)
+-- Debug Settings
+local function is_rust_project()
+  return vim.fn.filereadable("Cargo.toml") == 1
+end
+
+local function hybrid(map, rust_fn, cmake_cmd)
+  vim.keymap.set('n', map, function()
+    if is_rust_project() then
+      rust_fn()
+    else
+      vim.cmd(cmake_cmd)
+    end
+  end)
+end
+
+hybrid('<leader>bb', function() vim.cmd("!cargo build") end, 'CMakeBuild')
+hybrid('<leader>br', function() vim.cmd("!cargo run") end, 'CMakeRun')
+hybrid('<leader>bd', function() require("dap").continue() end,        'CMakeDebug')
+hybrid('<leader>bg', function() print("No CMake generate in Rust") end, 'CMakeGenerate')
+hybrid('<leader>bt', function() vim.cmd("!cargo test") end, 'CMakeRunTest')
+hybrid('<leader>bc', function() vim.cmd("!cargo clean") end, 'CMakeClean')
+hybrid('<leader>bs', function() print("No build target selection for Rust") end, 'CMakeSelectBuildTarget')
 
 -- Package Managers
 vim.keymap.set('n', '<leader>pl', vim.cmd.Lazy)

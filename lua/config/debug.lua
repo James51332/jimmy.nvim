@@ -1,14 +1,14 @@
--- Here, we'll setup all of the plugins needed for debugging our CMake C++ projects.
+-- Setup for CMake/C++ and Rust debugging
 local cmake, dap, mason, mason_dap, dapui = require 'cmake-tools', require 'dap', require 'mason', require 'mason-nvim-dap', require 'dapui'
 
--- Start by setting up mason package manager to install our needed debugger.
+-- Mason setup to install codelldb
 mason.setup()
 mason_dap.setup({
   ensure_installed = { 'codelldb' },
   automatic_installation = true
 })
 
--- Next, we'll setup dap with our usual configs.
+-- Adapter
 dap.adapters.codelldb = {
   type = "server",
   port = "${port}",
@@ -18,8 +18,7 @@ dap.adapters.codelldb = {
   },
 }
 
--- We won't really use this to be honest, but it's nice to be able to select an executable. This
--- way we can debug a file if we so choose.
+-- C++ configuration
 dap.configurations.cpp = {
   {
     name = 'Launch',
@@ -31,59 +30,64 @@ dap.configurations.cpp = {
     cwd = '${workspaceFolder}',
     stopOnEntry = true,
     args = {},
-    runInTerminal = false,
+    runInTerminal = true,
   },
 }
 
--- TODO Remove this
-dap.set_log_level('TRACE')
+-- Rust configuration
+dap.configurations.rust = {
+  {
+    name = 'Rust Debug',
+    type = 'codelldb',
+    request = 'launch',
+    program = function()
+      -- Build with cargo and get executable
+      local output = vim.fn.system("cargo build --message-format=json")
+      local exe = output:match('%"executable%":%s*%"([^"]+)"')
+      return exe or vim.fn.input('Path to Rust executable: ', vim.fn.getcwd(), 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false, 
+    args = {},
+    runInTerminal = true,
+  },
+}
 
--- Setup the DAP UI so we can step and whatnot.
+-- Setup DAP UI
 dapui.setup()
 
--- Store the user's window and buffer state
+-- Save/restore user's window and buffer
 local saved_state = {}
-
 local function refocus_terminal()
   if vim.fn.has("macunix") == 1 then
     os.execute("osascript -e 'tell application \"kitty\" to activate'")
   end
 end
 
-function dap_open_ui()
-  local win = vim.api.nvim_get_current_win()
-  local buf = vim.api.nvim_get_current_buf()
-  local view = vim.fn.winsaveview()
-  saved_state = {
-    win = win,
-    buf = buf,
-    view = view
-  }
-
+local function dap_open_ui()
+  saved_state.win = vim.api.nvim_get_current_win()
+  saved_state.buf = vim.api.nvim_get_current_buf()
+  saved_state.view = vim.fn.winsaveview()
   dapui.open()
 end
 
-function dap_close_ui()
+local function dap_close_ui()
   dapui.close()
   dap.terminate()
   dap.close()
-
-  if saved_state and saved_state.win and vim.api.nvim_win_is_valid(saved_state.win) then
+  if saved_state.win and vim.api.nvim_win_is_valid(saved_state.win) then
     vim.api.nvim_set_current_win(saved_state.win)
   end
-  if saved_state and saved_state.buf and vim.api.nvim_buf_is_valid(saved_state.buf) then
+  if saved_state.buf and vim.api.nvim_buf_is_valid(saved_state.buf) then
     vim.api.nvim_set_current_buf(saved_state.buf)
   end
-  if saved_state and saved_state.view then
+  if saved_state.view then
     vim.fn.winrestview(saved_state.view)
   end
-
-  vim.defer_fn(function()
-    refocus_terminal()
-  end, 500)
+  vim.defer_fn(refocus_terminal, 500)
 end
 
-
+-- Listeners for all sessions (C++ & Rust UI open/close)
 dap.listeners.after.event_initialized['dapui_config'] = dap_open_ui
 dap.listeners.before.event_terminated['dapui_config'] = dap_close_ui
 dap.listeners.before.event_exited['dapui_config'] = dap_close_ui

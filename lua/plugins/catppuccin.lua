@@ -18,11 +18,16 @@ return {
           indentscope_color = '',
         },
       },
+      custom_highlights = function(colors)
+        return {
+          -- This forces the legacy group and the modern TS group to look like comments
+          rustTodo = { link = "Comment" },
+          Todo = { link = "Comment" },
+          ["@comment.todo"] = { link = "Comment" },
+        }
+      end,
     })
-
+    
     vim.cmd.colorscheme 'catppuccin'
-
-    -- Fix XXX highlighting
-    vim.api.nvim_set_hl(0, "Todo", { link = "Comment" })
   end 
 }

@@ -27,9 +27,8 @@ require('oil').setup({
 
 -- Setup telescope to ignore vendor stuff
 require('telescope').setup({defaults = {
-  file_ignore_patterns = { '/.git/', '/out/', '/build/', '/thirdparty/', '^.git/', '^out/', '^build/', '^thirdparty/' }
+  file_ignore_patterns = { '/.git/', '/out/', '/build/', '/thirdparty/', '^.git/', '^out/', '^build/', '^thirdparty/', 'tlarget/' }
 }})
 
 -- Setup neoscroll
 require('neoscroll').setup({ mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'} })
-

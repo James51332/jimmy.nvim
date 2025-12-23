@@ -2,8 +2,8 @@
 require("config.lazy")
 require("config.settings")
 require("config.remaps")
-require("config.hardmode")
 require("config.debug")
+require("config.fuzzy")
 
 -- Setup LSP
 vim.lsp.enable("clangd")

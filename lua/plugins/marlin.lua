@@ -1,5 +1,4 @@
-return
-{
+return {
   'desdic/marlin.nvim',
   config = function(_, opts)
     local marlin = require('marlin')

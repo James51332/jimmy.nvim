@@ -18,8 +18,6 @@ vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = 'yes:2'
 opt.clipboard = 'unnamedplus'
 
-vim.keymap.set('v', '<', '< gv')
-vim.keymap.set('v', '>', '> gv')
 
 -- Setup oil.nvim
 require('oil').setup({
@@ -31,3 +29,7 @@ require('oil').setup({
 require('telescope').setup({defaults = {
   file_ignore_patterns = { '/.git/', '/out/', '/build/', '/thirdparty/', '^.git/', '^out/', '^build/', '^thirdparty/' }
 }})
+
+-- Setup neoscroll
+require('neoscroll').setup({ mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'} })
+

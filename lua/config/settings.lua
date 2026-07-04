@@ -15,6 +15,7 @@ opt.cinoptions = opt.cinoptions + 't0'
 opt.formatoptions = 'tcqn' 
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.wgsl",  command = "setfiletype wgsl" })
 opt.signcolumn = 'yes:2'
 opt.clipboard = 'unnamedplus'
 

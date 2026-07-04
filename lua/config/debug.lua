@@ -4,7 +4,7 @@ local cmake, dap, mason, mason_dap, dapui = require 'cmake-tools', require 'dap'
 -- Mason setup to install codelldb
 mason.setup()
 mason_dap.setup({
-  ensure_installed = { 'codelldb' },
+  ensure_installed = { 'codelldb', 'rust-analyzer', 'basedpyright', 'wgsl-analyzer' },
   automatic_installation = true
 })
 

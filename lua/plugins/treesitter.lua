@@ -1,6 +1,8 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    tag = "v0.10.0",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
       -- Use pcall (protected call) to prevent Neovim from crashing if things move
@@ -8,7 +10,7 @@ return {
       if not status then return end
 
       configs.setup({
-        ensure_installed = { "c", "cpp", "python", "rust", "lua", "vim", "vimdoc", "comments" },
+        ensure_installed = { "c", "cpp", "python", "rust", "lua", "vim", "vimdoc", "comment", "wgsl" },
         highlight = {
           enable = true,
           -- This is what finally removes the XXX highlighting from old Vim

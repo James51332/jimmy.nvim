@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>li', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
 vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
-vim.keymap.set('i', '<C-space>', '<C-x><C-o>')
+vim.keymap.set('i', '<C-space>',  vim.lsp.buf.completion)
 
 -- Debug Settings (Use s b/c it's safer than d)
 local dap, dapui = require('dap'), require('dapui')

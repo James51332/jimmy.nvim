@@ -1,10 +1,18 @@
 return {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    keys = {
-      { "<leader>mt", "<cmd>Markview Toggle<cr>" },
-    }
-
-    -- Completion for `blink.cmp`
-    -- dependencies = { "saghen/blink.cmp" },
-};
+  'OXY2DEV/markview.nvim',
+  lazy = false,
+  opts = {
+    preview = {
+      icon_provider = 'mini',
+    },
+  },
+  dependencies = {
+    {
+      'nvim-mini/mini.icons',
+      opts = {}
+    },
+  },
+  keys = {
+    { '<leader>mt', '<cmd>Markview toggle<cr>', desc = 'Toggle markdown preview' },
+  },
+}

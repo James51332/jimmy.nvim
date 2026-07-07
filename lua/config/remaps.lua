@@ -9,5 +9,9 @@ vim.keymap.set('n', '<leader>w', vim.cmd.w)
 vim.keymap.set('v', '<', '< gv')
 vim.keymap.set('v', '>', '> gv')
 
+-- Selection movement
+vim.keymap.set({ 'n', 'i' }, '<C-j>', '<C-n>')
+vim.keymap.set({ 'n', 'i' }, '<C-k>', '<C-p>')
+
 -- Window management
 vim.keymap.set('n', '<leader>q', vim.cmd.q)

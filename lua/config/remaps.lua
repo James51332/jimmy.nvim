@@ -10,4 +10,4 @@ vim.keymap.set('v', '<', '< gv')
 vim.keymap.set('v', '>', '> gv')
 
 -- Window management
-vim.keymap.set('n', '<leader>x', vim.cmd.q)
+vim.keymap.set('n', '<leader>q', vim.cmd.q)

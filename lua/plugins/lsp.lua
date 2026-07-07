@@ -1,22 +1,27 @@
 return {
   'mason-org/mason-lspconfig.nvim',
   lazy = false,
+  dependencies = {
+    {
+      'mason-org/mason.nvim',
+      opts = {},
+      keys = { { '<leader>pm', '<cmd>Mason<cr>', desc = 'Open Mason' } },
+    },
+    'neovim/nvim-lspconfig',
+    {
+      'saghen/blink.cmp',
+      version = '1.x',
+      opts = { completion = { documentation = { auto_show = true } } },
+    },
+  },
   opts = {
     ensure_installed = {
       'lua_ls',
       'rust_analyzer',
       'clangd',
+      'basedpyright',
+      'ts_ls',
     },
-  },
-  dependencies = {
-    {
-      'mason-org/mason.nvim',
-      opts = {},
-      keys = {
-        { '<leader>pm', vim.cmd.Mason, desc = 'Open Mason' },
-      },
-    },
-    'neovim/nvim-lspconfig',
   },
   keys = {
     { '<leader>lf', vim.lsp.buf.format,         desc = 'LSP format' },

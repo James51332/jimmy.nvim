@@ -1,7 +1,17 @@
 return {
   'stevearc/oil.nvim',
+  lazy = false,
   dependencies = { 
-    'nvim-tree/nvim-web-devicons',
-    'echasnovski/mini.nvim'
-  }
+    { 
+      "nvim-mini/mini.icons", 
+      opts = {} 
+    } 
+  },
+  opts = {},
+  keys = {
+    { 
+      '<leader>e', 
+      function() require('oil').open() end 
+    },
+  },
 }

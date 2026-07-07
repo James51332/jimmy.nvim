@@ -1,35 +1,15 @@
--- Setup basic settings about nvim
-local opt = vim.opt
+-- Line number and tab
+vim.opt.number = true
+vim.opt.rnu = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
--- Enable line numbering
-opt.rnu = true
-opt.number = true
+-- Use device clipboard for yank
+vim.opt.clipboard = 'unnamedplus'
 
--- Set desired tab settings
-opt.et = true
-opt.shiftwidth = 2
-opt.smarttab = true
-opt.cinoptions = opt.cinoptions + 't0'
-
--- Misc settings
-opt.formatoptions = 'tcqn' 
-vim.cmd('autocmd BufEnter * set formatoptions-=cro')
-vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.wgsl",  command = "setfiletype wgsl" })
-opt.signcolumn = 'yes:2'
-opt.clipboard = 'unnamedplus'
-
-
--- Setup oil.nvim
-require('oil').setup({
-  delete_to_trash = true,
-  skip_confirm_for_simple_edits = true,
-})
-
--- Setup telescope to ignore vendor stuff
-require('telescope').setup({defaults = {
-  file_ignore_patterns = { '/.git/', '/out/', '/build/', '/thirdparty/', '^.git/', '^out/', '^build/', '^thirdparty/', 'tlarget/' }
-}})
-
--- Setup neoscroll
-require('neoscroll').setup({ mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'} })
+-- Disable neovim loading for languages
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0

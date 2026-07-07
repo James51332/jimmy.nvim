@@ -1,13 +1,4 @@
--- Include our other settings
-require("config.lazy")
-require("config.settings")
-require("config.remaps")
-require("config.debug")
-require("config.fuzzy")
-
--- Setup LSP
-vim.lsp.enable("clangd")
-vim.lsp.enable("basedpyright")
-vim.lsp.enable("typescript")
-vim.lsp.enable("rust-analyzer")
-vim.lsp.enable("wgsl-analyzer")
+-- It's important to set our map leader before loading lazy.
+require('config.settings')
+require('config.remaps')
+require('config.lazy')

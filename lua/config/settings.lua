@@ -8,6 +8,9 @@ vim.opt.shiftwidth = 2
 -- Use device clipboard for yank
 vim.opt.clipboard = 'unnamedplus'
 
+-- Set the sign column to stay active
+vim.opt.signcolumn = 'yes'
+
 -- Disable neovim loading for languages
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0

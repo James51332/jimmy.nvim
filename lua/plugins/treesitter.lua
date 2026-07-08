@@ -1,12 +1,20 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  branch = 'master',
-  build = ':TSUpdate',
+  branch = 'main',
   lazy = false,
+  build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup({
-      ensure_installed = { 'wgsl' },
-      highlight = { enable = true },
+    require('nvim-treesitter').install({
+      'rust',
+      'wgsl',
+    })
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = {
+        'rust',
+        'wgsl',
+      },
+      callback = function() vim.treesitter.start() end,
     })
   end,
 }

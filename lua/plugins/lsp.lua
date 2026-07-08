@@ -21,6 +21,7 @@ return {
       'clangd',
       'basedpyright',
       'ts_ls',
+      'wgsl_analyzer',
     },
   },
   keys = {

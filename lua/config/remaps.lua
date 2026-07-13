@@ -15,3 +15,4 @@ vim.keymap.set({ 'n', 'i' }, '<C-k>', '<C-p>')
 
 -- Window management
 vim.keymap.set('n', '<leader>q', vim.cmd.q)
+vim.keymap.set('n', '<leader>o', '<C-w>o')

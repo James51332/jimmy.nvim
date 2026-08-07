@@ -19,7 +19,7 @@ return {
       'lua_ls',
       'rust_analyzer',
       'clangd',
-      'basedpyright',
+      'pyright',
       'ts_ls',
       'wgsl_analyzer',
     },

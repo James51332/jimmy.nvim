@@ -4,7 +4,7 @@ return {
   dependencies = {
     {
       'mason-org/mason.nvim',
-      opts = {},
+      opts = { PATH = 'append' },
       keys = { { '<leader>pm', '<cmd>Mason<cr>', desc = 'Open Mason' } },
     },
     'neovim/nvim-lspconfig',
